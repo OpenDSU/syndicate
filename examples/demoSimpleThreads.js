@@ -1,5 +1,5 @@
 const syndicate = require('../index');
-const worker_threads ='worker_threads';
+const worker_threads = 'worker_threads';
 const {isMainThread} = require(worker_threads);
 
 if (isMainThread) {

@@ -3,11 +3,12 @@ const WorkerPool = require('./lib/WorkerPool');
 const WorkerStrategies = require('./lib/WorkerStrategies');
 
 let registry = {};
-function registerWorkerStrategy(strategyName, constructor){
+
+function registerWorkerStrategy(strategyName, constructor) {
     registry[strategyName] = constructor;
 }
 
-function getWorkerStrategy(strategyName){
+function getWorkerStrategy(strategyName) {
     return registry[strategyName];
 }
 
@@ -28,7 +29,7 @@ function createWorkerPool(poolConfig, workerCreateHelper) {
     }*/
 
     let workerStrategy = getWorkerStrategy(newPoolConfig.workerStrategy);
-    if(typeof workerStrategy === "undefined"){
+    if (typeof workerStrategy === "undefined") {
         throw new TypeError(`Could not find a implementation for worker strategy "${newPoolConfig.workerStrategy}"`);
     }
 
